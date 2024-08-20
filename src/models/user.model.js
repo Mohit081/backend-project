@@ -10,7 +10,7 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      index: true
+      index: true,
     },
     email: {
       type: String,
@@ -18,15 +18,15 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      index:true
+      index: true,
     },
     fullName: {
       type: String,
       required: true,
       trim: true,
-      index: true
+      index: true,
     },
-    avatar: { 
+    avatar: {
       type: String,
       required: true,
     },
@@ -46,7 +46,7 @@ const userSchema = new Schema(
     refreshToken: {
       type: String,
     },
-  }, 
+  },
   {
     timestamps: true,
   }

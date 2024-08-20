@@ -1,6 +1,6 @@
-import { User } from "../models/user.model";
-import { ApiError } from "../utlis/ApiError";
-import { asyncHandler } from "../utlis/asyncHandler";
+import { User } from "../models/user.model.js";
+import { ApiError } from "../utlis/ApiError.js";
+import { asyncHandler } from "../utlis/asyncHandler.js";
 import jwt from "jsonwebtoken"
 
 
