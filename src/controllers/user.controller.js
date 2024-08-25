@@ -4,7 +4,7 @@ import { asyncHandler } from "../utlis/asyncHandler.js";
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utlis/cloudinary.js";
 import mongoose from "mongoose";
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";  
 
 const generateAccessandRefreshTokens = async (userId) => {
   try {
@@ -244,11 +244,11 @@ const changePassword = asyncHandler(async (req, res) => {
   }
 
   user.password = newPassword;
-  await user.save({ validateBeforSave: false });
+  await User.save({ validateBeforSave: false });
 
   return res
     .status(200)
-    .json(ApiResponse(200, {}, " password change Successfully"));
+    .json( new ApiResponse(200, {} , " password change Successfully"));
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
@@ -297,7 +297,7 @@ const updateAvatar = asyncHandler(async (req, res) => {
     { new: true }
   ).select("-password");
 
-  User.save({ validateBeforSave: false });
+  // User.save({ validateBeforSave: false });
 
   res
     .status(200)
@@ -327,8 +327,6 @@ const updateCoverImage = asyncHandler(async (req, res) => {
     { new: true }
   ).select("-password");
 
-  User.save({ validateBeforSave: false });
-
   res
     .status(200)
     .json(new ApiResponse(200, user, "coverImage updated successfully"));
@@ -350,7 +348,7 @@ const getUserChannelprofile = asyncHandler(async (req, res) => {
     },
     {
       $lookup: {
-        from: Subscripition,
+        from: subscripition,
         localField: "_id",
         foreignField: "channel",
         as: "subscribers",
@@ -358,7 +356,7 @@ const getUserChannelprofile = asyncHandler(async (req, res) => {
     },
     {
       $lookup: {
-        from: Subscripition,
+        from: subscripition,
         localField: "_id",
         foreignField: "subscriber",
         as: "subscribedTo",
@@ -467,3 +465,4 @@ export {
   getUserChannelprofile,
   getUserWatchHistory 
 };
+  

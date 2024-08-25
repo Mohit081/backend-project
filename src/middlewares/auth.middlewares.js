@@ -21,6 +21,7 @@ export const verifyJwt = asyncHandler(async (req , _ , next) => {
        }
 
        req.user = user ;
+       console.log("user login hai")
        next ()
 
 
