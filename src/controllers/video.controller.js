@@ -116,7 +116,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
     throw new ApiError(400, "videoId is required");
   }
 
-  await Video.findByIdAndDelete(videoId, {});
+  await Video.findByIdAndDelete(videoId);
 
   return res
     .status(200)
